@@ -75,6 +75,18 @@ ____________________________________________________________________________
 from sklearn import svm
 from sklearn.metrics import confusion_matrix, accuracy_score
 
+data_train = np.c_[x_train, y_train]
+data_test =np.c_[x_test, y_test]
+
+classifier = svm.SVC(gamma=1)
+classifier.fit(data_train, label_train.reshape(-1))
+
+pred_test = classifier.predict(data_test)
+
+print('accuracy_score:\n', accuracy_score(label_test.reshape(-1),pred_test))
+
+print('Confusion matrix:\n', confusion_matrix(label_test.reshape(-1), pred_test))
+
 
 
 
